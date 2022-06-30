@@ -4,7 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Header from './components/Header/Header';
 import DashBoard from './components/DashBoard/DashBoard';
 import ManageServices from './components/DashBoard/ManageServices/ManageServices';
-import ToDo from './components/DashBoard/Upload/ToDo';
+import AddTask from './components/DashBoard/Upload/AddTask';
 function App() {
   return (
     <>
@@ -14,8 +14,8 @@ function App() {
           <Route index path='/overview' element={
             <ManageServices></ManageServices>
           }></Route>
-          <Route path='/upload/to-do' element={
-            <ToDo></ToDo>
+          <Route path='add-tasks' element={
+            <AddTask></AddTask>
           }></Route>
         </Route>
       </Routes>
