@@ -13,7 +13,7 @@ const Overview = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table text-white w-full">
+        <table className="table w-full text-slate-700">
           <thead style={{ backgroundColor: '#fff' }}>
             <tr>
               <th>Id</th>

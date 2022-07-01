@@ -14,7 +14,7 @@ const Completed = () => {
     <div>
       <div>
         <div className="overflow-x-auto">
-          <table className="table text-white w-full">
+          <table className="table text-slate-700 w-full">
             <thead style={{ backgroundColor: '#fff' }}>
               <tr>
                 <th>Id</th>
