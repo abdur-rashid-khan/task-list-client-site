@@ -4,7 +4,7 @@ const Overview = () => {
   const [task, setTask] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/task', {
+    fetch('https://afternoon-bastion-35335.herokuapp.com/task', {
       method: 'GET',
     })
       .then(res => res.json())

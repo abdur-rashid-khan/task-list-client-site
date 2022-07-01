@@ -5,7 +5,7 @@ const ManageTask = () => {
   const [task, setTask] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/task', {
+    fetch('https://afternoon-bastion-35335.herokuapp.com/task', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -14,7 +14,7 @@ const ManageTask = () => {
   const finishBtn = e => {
     console.log(e)
     // send services data to database
-    fetch(`http://localhost:5000/manage-task/${e}`, {
+    fetch(`https://afternoon-bastion-35335.herokuapp.com/manage-task/${e}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

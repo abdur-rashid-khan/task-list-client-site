@@ -4,7 +4,7 @@ const Incomplete = () => {
   const [incomplete, setIncomplete] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/incomplete-task', {
+    fetch('https://afternoon-bastion-35335.herokuapp.com/incomplete-task', {
       method: 'GET',
     })
       .then(res => res.json())

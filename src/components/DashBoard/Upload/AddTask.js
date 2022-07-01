@@ -30,7 +30,7 @@ const AddTask = () => {
             img: img
           }
           // send services data to database
-          fetch('http://localhost:5000/task', {
+          fetch('https://afternoon-bastion-35335.herokuapp.com/task', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
