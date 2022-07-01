@@ -26,9 +26,9 @@ function App() {
           <Route path='completed-tasks' element={
             <Completed></Completed>
           }></Route>
-          {/* <Route path='manage-tasks' element={
+          <Route path='manage-tasks' element={
             <ManageTask></ManageTask>
-          }></Route> */}
+          }></Route>
           <Route path='calender' element={
             <Calendar></Calendar>
           }></Route> 

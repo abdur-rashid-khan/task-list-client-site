@@ -1,7 +1,7 @@
 import React from 'react';
 import {  Outlet } from 'react-router-dom';
 // for hero icon 
-import { CalendarIcon, CheckCircleIcon, ExclamationCircleIcon, HomeIcon, MenuIcon, ViewGridAddIcon } from '@heroicons/react/solid'
+import { CalendarIcon, CheckCircleIcon, ExclamationCircleIcon, HomeIcon, MenuIcon, PuzzleIcon, ViewGridAddIcon } from '@heroicons/react/solid'
 import CustomLink from './Active/CustomLink';
 import Footer from '../Footer/Footer';
 
@@ -45,7 +45,7 @@ const DashBoard = () => {
 							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/completed-tasks'}><CheckCircleIcon className='text-slate-600 w-6' /> Completed Tasks</CustomLink></li>
 							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/incomplete-tasks'}><ExclamationCircleIcon className='text-slate-600 w-6' /> Incomplete Tasks</CustomLink></li>
 							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/add-tasks'}><ViewGridAddIcon className='text-slate-600 w-6' /> Add Tasks</CustomLink></li>
-							{/* <li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/manage-tasks'}><ViewGridAddIcon className='text-slate-600 w-6' /> Manage Tasks</CustomLink></li> */}
+							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/manage-tasks'}><PuzzleIcon className='text-slate-600 w-6' /> Manage Tasks</CustomLink></li>
 							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/calender'}><CalendarIcon className='text-slate-600 w-6' /> Calender</CustomLink></li>
 						</ul>
 					</div>

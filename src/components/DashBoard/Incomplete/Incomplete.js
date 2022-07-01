@@ -13,34 +13,37 @@ const Incomplete = () => {
   return (
     <div>
       <div>
-      <div className="overflow-x-auto">
-        <table className="table text-slate-700 w-full">
-          <thead style={{ backgroundColor: '#fff' }}>
-            <tr>
-              <th>Id</th>
-              <th>task name </th>
-              <th>task start date </th>
-              <th>task end date</th>
-              <th>status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              incomplete.map((t, index) =>
-                <tr key={index}>
-                  <th>{index+1}</th>
-                  <td>{t.taskName}</td>
-                  <td>{t.taskStartDate}</td>
-                  <td>{t.taskEndDate}</td>
-                  <td className='text-red-500'>{t.status}</td>
-                </tr>
-              )
-            }
+        <div className="overflow-x-auto">
+          <table className="table text-slate-700 w-full">
+            <thead style={{ backgroundColor: '#fff' }}>
+              <tr>
+                <th>Id</th>
+                <th>task name </th>
+                <th>task start date </th>
+                <th>task end date</th>
+                <th>status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                incomplete.map((t, index) =>
+                  <tr key={index}>
+                    <th>{index + 1}</th>
+                    <td>{t.taskName}</td>
+                    <td>{t.taskStartDate}</td>
+                    <td>{t.taskEndDate}</td>
+                    <td className='text-red-500'>{t.status}</td>
+                  </tr>
+                )
+              }
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+          {
+            incomplete.length === 0 && <p className='text-xl py-4 px-4 text-slate-700 font-serif font-semibold'>No Data Found</p>
+          }
+        </div>
       </div>
-    </div>
     </div>
   );
 };

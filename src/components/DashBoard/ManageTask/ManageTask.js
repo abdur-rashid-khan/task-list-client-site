@@ -11,10 +11,12 @@ const ManageTask = () => {
       .then(res => res.json())
       .then(data => setTask(data))
   }, [])
+
   const finishBtn = e => {
-    console.log(e)
+    const id = e._id;
+    console.log(id);
     // send services data to database
-    fetch(`https://afternoon-bastion-35335.herokuapp.com/manage-task/${e}`, {
+    fetch(`http://localhost:5000/manage-task/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -22,10 +24,11 @@ const ManageTask = () => {
       body: JSON.stringify(e)
     })
       .then(res => res.json())
+      // .then(data=>console.log(data))
       .then(inserted => {
         if (inserted.acknowledged) {
           Swal.fire(
-            'task complete',
+            'task completed',
             '',
             'success'
           )
@@ -35,7 +38,7 @@ const ManageTask = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table text-white w-full">
+        <table className="table text-slate-700 w-full">
           <thead style={{ backgroundColor: '#fff' }}>
             <tr>
               <th>Id</th>
@@ -55,9 +58,9 @@ const ManageTask = () => {
                   <td>{t.taskEndDate}</td>
                   {
                     t.status === 'incomplete' ?
-                      <td onClick={() => { finishBtn(t._id) }} className='text-white bg-slate-600' style={{ cursor: 'pointer' }}>Let's finish</td>
+                      <td className='p-0'> <button onClick={() => { finishBtn(t) }} className='text-white bg-blue-800 rounded p-2' style={{ cursor: 'pointer' }}>complete now</button></td>
                       :
-                      <td className='text-blue-400'>{t.status}</td>
+                      <td className='text-blue-800 font-semibold'>{t.status}</td>
                   }
                 </tr>
               )
