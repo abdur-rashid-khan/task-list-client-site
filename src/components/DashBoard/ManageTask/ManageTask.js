@@ -16,7 +16,7 @@ const ManageTask = () => {
     const id = e._id;
     console.log(id);
     // send services data to database
-    fetch(`http://localhost:5000/manage-task/${id}`, {
+    fetch(`https://afternoon-bastion-35335.herokuapp.com/manage-task/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
