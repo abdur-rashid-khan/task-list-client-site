@@ -22,9 +22,11 @@
   -o-border-radius: .5rem;
 }
 
-@media only screen and (max-width:300px) {
+@media only screen and (max-width:375px) {
   #services-content {
     width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
   }
 
   #slideBar {

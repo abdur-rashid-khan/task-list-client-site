@@ -10,7 +10,6 @@ const Incomplete = () => {
       .then(res => res.json())
       .then(data => setIncomplete(data))
   }, [])
-  console.log(incomplete);
   return (
     <div>
       <div>
