@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
+import auth from '../../../firebase.init';
+import Loading from '../../Loading/Loading';
 import './Upload.css'
 
 const AddTask = () => {
   const [agree, setAgree] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = data => {
     const imgbbAPIKey = 'ef8e2adcf82ba9b088feff829df4d6bf';
@@ -26,7 +30,8 @@ const AddTask = () => {
             taskEndDate: data.taskEndDate,
             budget: data.budget,
             taskDescription: data.taskDescription,
-            status:'incomplete',
+            status: 'incomplete',
+            email: user.email,
             img: img
           }
           // send services data to database
@@ -57,6 +62,14 @@ const AddTask = () => {
   const agreeBtn = e => {
     const agreeValue = e.target.checked;
     setAgree(agreeValue)
+  }
+  // for user 
+
+  if (loading) {
+    return <Loading></Loading>
+  }
+  if (error) {
+    console.log(error);
   }
   return (
     <section>
@@ -176,7 +189,7 @@ const AddTask = () => {
                 <div className=' block sm:flex '>
                   <label htmlFor="taskDescription" className="text-slate-500 w-1/5 font-semibold">Task Description</label>
                   <textarea id="taskDescription" name="taskDescription" type="text" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Type Here Services Description "
-                    cols="5" 
+                    cols="5"
                     rows="5"
                     {...register("taskDescription", {
                       required: {

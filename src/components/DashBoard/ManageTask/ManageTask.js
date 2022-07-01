@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import Swal from 'sweetalert2';
+import auth from '../../../firebase.init';
+import Loading from '../../Loading/Loading';
 
 const ManageTask = () => {
   const [task, setTask] = useState([]);
-
+  const [user, loading, error] = useAuthState(auth);
   useEffect(() => {
-    fetch('https://afternoon-bastion-35335.herokuapp.com/task', {
+    fetch(`https://afternoon-bastion-35335.herokuapp.com/task/${user.email}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => setTask(data))
-  }, [])
+  }, [user])
 
   const finishBtn = e => {
     const id = e._id;
@@ -34,6 +37,12 @@ const ManageTask = () => {
           )
         }
       })
+  }
+  if (loading) {
+    return <Loading></Loading>
+  }
+  if (error) {
+    console.log(error);
   }
   return (
     <div>
@@ -68,6 +77,9 @@ const ManageTask = () => {
 
           </tbody>
         </table>
+        {
+          task.length === 0 && <p className='text-xl py-4 px-4 text-slate-700 font-serif font-semibold'>No Data Found</p>
+        }
       </div>
     </div>
   );

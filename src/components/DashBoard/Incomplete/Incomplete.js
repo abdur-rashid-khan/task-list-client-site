@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import Loading from '../../Loading/Loading';
 
 const Incomplete = () => {
   const [incomplete, setIncomplete] = useState([]);
-
+  const [user, loading, error] = useAuthState(auth);
   useEffect(() => {
-    fetch('https://afternoon-bastion-35335.herokuapp.com/incomplete-task', {
+    fetch(`https://afternoon-bastion-35335.herokuapp.com/incomplete-task/${user.email}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => setIncomplete(data))
-  }, [])
+  }, [user])
+  if (loading) {
+    return <Loading></Loading>
+  }
+  if (error) {
+    console.log(error);
+  }
   return (
     <div>
       <div>

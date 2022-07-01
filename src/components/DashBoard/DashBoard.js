@@ -1,12 +1,25 @@
 import React from 'react';
-import {  Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 // for hero icon 
 import { CalendarIcon, CheckCircleIcon, ExclamationCircleIcon, HomeIcon, MenuIcon, PuzzleIcon, ViewGridAddIcon } from '@heroicons/react/solid'
 import CustomLink from './Active/CustomLink';
 import Footer from '../Footer/Footer';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
+import { signOut } from 'firebase/auth';
 
 const DashBoard = () => {
-
+	const [user, loading, error] = useAuthState(auth);
+	if (loading) {
+		return <Loading></Loading>
+	}
+	if (error) {
+		console.log(error);
+	}
+	const logout = () => {
+		signOut(auth);
+	};
 	return (
 		<>
 			<div className="container mx-auto px-2 lg:px-0">
@@ -16,7 +29,7 @@ const DashBoard = () => {
 						{/* <!-- Page content here --> */}
 						<div className="text-left mt-4 fixed" style={{ zIndex: '1111111' }}>
 							<label htmlFor="open-dashboard-menu" className="w-10 rounded h-10 inline-block cursor-pointer bg-blue-500 hover:bg-blue-800 text-white lg:hidden"><span>
-								<MenuIcon/>
+								<MenuIcon />
 							</span> </label>
 						</div>
 						<div className="text-center ">
@@ -35,10 +48,14 @@ const DashBoard = () => {
 							<div className="profile text-center py-8">
 								<div className="avatar online ">
 									<div className="w-24 rounded-full">
-										<img src="https://placeimg.com/192/192/people" />
+										{
+											user?.photoURL ? <img src={user?.photoURL} alt='' /> : <img src="https://placeimg.com/192/192/people" alt='' />
+										}
+
 									</div>
 								</div>
-								<strong className='block'>Rashid khan</strong>
+								<strong className='block'>{user?.displayName}</strong>
+								<button className='capitalize mt-2 border text-slate-400 hover:bg-blue-700 text-sm hover:text-white px-2 py-1 rounded' onClick={logout}>logOut</button>
 							</div>
 							{/* <!-- Sidebar content here --> */}
 							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 ' to={'/'}><HomeIcon className='text-slate-600 w-6'></HomeIcon> Overview</CustomLink></li>

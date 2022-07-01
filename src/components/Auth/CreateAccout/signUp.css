@@ -1,0 +1,11 @@
+#signInForm{
+  width: 400px;
+  margin: auto;
+  background-color: #E3ECF0;
+  padding:2rem;
+}
+@media only screen  and (max-width:570px){
+  #signInForm{
+     width: 100%;
+  }
+}

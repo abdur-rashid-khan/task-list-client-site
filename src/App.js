@@ -8,31 +8,43 @@ import Incomplete from './components/DashBoard/Incomplete/Incomplete';
 import Completed from './components/DashBoard/Completed/Completed';
 import ManageTask from './components/DashBoard/ManageTask/ManageTask';
 import Calendar from './components/DashBoard/Calendar/Calendar';
+import RequireAuth from './components/Auth/RequireAuth';
+import Login from './components/Auth/Login/Login';
+import SignUp from './components/Auth/CreateAccout/NewAccount';
 function App() {
   return (
     <>
       {/* <Header></Header> */}
       <Routes>
         <Route path="/" element={<DashBoard />} >
-          <Route index  element={
-            <Overview></Overview>
+          <Route index element={
+            <RequireAuth><Overview></Overview></RequireAuth>
+
           }></Route>
           <Route path='add-tasks' element={
-            <AddTask></AddTask>
+            <RequireAuth><AddTask></AddTask></RequireAuth>
           }></Route>
           <Route path='incomplete-tasks' element={
-            <Incomplete></Incomplete>
+            <RequireAuth><Incomplete></Incomplete></RequireAuth>
+
           }></Route>
           <Route path='completed-tasks' element={
-            <Completed></Completed>
+            <RequireAuth><Completed></Completed></RequireAuth>
+
           }></Route>
           <Route path='manage-tasks' element={
-            <ManageTask></ManageTask>
+            <RequireAuth><ManageTask></ManageTask></RequireAuth>
           }></Route>
           <Route path='calender' element={
-            <Calendar></Calendar>
-          }></Route> 
+            <RequireAuth><Calendar></Calendar></RequireAuth>
+          }></Route>
         </Route>
+        <Route path='/login' element={
+          <Login></Login>
+        }></Route>
+        <Route path='/signup' element={
+          <SignUp></SignUp>
+        }></Route>
       </Routes>
     </>
   );
