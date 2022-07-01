@@ -2,3 +2,7 @@ body{
   background-color: #f1f1f1;
   color: #000;
 }
+.menu[class*="p-"] li > *, .menu[class^="p-"] li > * {
+  /* padding: 0px 10px; */
+  background-color: transparent;
+}

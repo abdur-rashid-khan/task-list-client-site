@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import menu from '../../img/menu.png'
+import {  Outlet } from 'react-router-dom';
 // for hero icon 
 import { CalendarIcon, CheckCircleIcon, ExclamationCircleIcon, HomeIcon, MenuIcon, ViewGridAddIcon } from '@heroicons/react/solid'
 import CustomLink from './Active/CustomLink';
+import Footer from '../Footer/Footer';
 
 const DashBoard = () => {
 
@@ -14,7 +14,7 @@ const DashBoard = () => {
 					<input id="open-dashboard-menu" type="checkbox" className="drawer-toggle" />
 					<div className="drawer-content  flex flex-col bg-slate-200 py-6" id='total_content'>
 						{/* <!-- Page content here --> */}
-						<div className="text-left mt-4" style={{ zIndex: '1111111' }}>
+						<div className="text-left mt-4 fixed" style={{ zIndex: '1111111' }}>
 							<label htmlFor="open-dashboard-menu" className="w-10 rounded h-10 inline-block cursor-pointer bg-blue-500 hover:bg-blue-800 text-white lg:hidden"><span>
 								<MenuIcon/>
 							</span> </label>
@@ -41,15 +41,17 @@ const DashBoard = () => {
 								<strong className='block'>Rashid khan</strong>
 							</div>
 							{/* <!-- Sidebar content here --> */}
-							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 ' to={'/overview'}><HomeIcon className='text-slate-600 w-6'></HomeIcon> Overview</CustomLink></li>
-							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/completed-task'}><CheckCircleIcon className='text-slate-600 w-6' /> Completed Tasks</CustomLink></li>
+							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 ' to={'/'}><HomeIcon className='text-slate-600 w-6'></HomeIcon> Overview</CustomLink></li>
+							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/completed-tasks'}><CheckCircleIcon className='text-slate-600 w-6' /> Completed Tasks</CustomLink></li>
 							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/incomplete-tasks'}><ExclamationCircleIcon className='text-slate-600 w-6' /> Incomplete Tasks</CustomLink></li>
 							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/add-tasks'}><ViewGridAddIcon className='text-slate-600 w-6' /> Add Tasks</CustomLink></li>
+							{/* <li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/manage-tasks'}><ViewGridAddIcon className='text-slate-600 w-6' /> Manage Tasks</CustomLink></li> */}
 							<li className='py-1 text-lg hover:text-black rounded'><CustomLink className='flex gap-4 capitalize' to={'/calender'}><CalendarIcon className='text-slate-600 w-6' /> Calender</CustomLink></li>
 						</ul>
 					</div>
 				</div>
 			</div>
+			<Footer></Footer>
 		</>
 	);
 };

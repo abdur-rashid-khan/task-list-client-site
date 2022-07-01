@@ -30,7 +30,7 @@ const AddTask = () => {
             img: img
           }
           // send services data to database
-          fetch('http://localhost:5000/services', {
+          fetch('http://localhost:5000/task', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
@@ -154,7 +154,7 @@ const AddTask = () => {
               <div >
                 <div className='block sm:flex items-center'>
                   <label htmlFor="budget" className="text-slate-500 font-semibold w-1/5 ">Budget</label>
-                  <input id="budget" name="budget" type="text" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="How Much Your Budget "
+                  <input id="budget" name="budget" type="number" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="How Much Your Budget "
                     {...register("budget", {
                       required: {
                         value: true,
