@@ -11,6 +11,7 @@ import Calendar from './components/DashBoard/Calendar/Calendar';
 import RequireAuth from './components/Auth/RequireAuth';
 import Login from './components/Auth/Login/Login';
 import SignUp from './components/Auth/CreateAccout/NewAccount';
+import Update from './components/DashBoard/Update/Update';
 function App() {
   return (
     <>
@@ -37,6 +38,9 @@ function App() {
           }></Route>
           <Route path='calender' element={
             <RequireAuth><Calendar></Calendar></RequireAuth>
+          }></Route>
+          <Route path='/update/:id' element={
+            <RequireAuth><Update></Update></RequireAuth>
           }></Route>
         </Route>
         <Route path='/login' element={
